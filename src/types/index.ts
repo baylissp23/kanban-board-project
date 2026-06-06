@@ -1,7 +1,7 @@
 export type TicketStatus =
-  | "open"
-  | "in progress"
-  | "done"
+  | "Open"
+  | "In Progress"
+  | "Done"
 
 export interface Ticket {
     id : number;

@@ -8,7 +8,32 @@ interface TicketStoreState {
 }
 
 export const useTicketStore = create<TicketStoreState>()((set) => ({
-  tickets : [],
+  tickets : [
+    {
+      id: 1,
+      title: "Example Task 1",
+      description: "Example task description.",
+      status: "Done"
+    },
+    {
+      id: 2,
+      title: "Example Task 2",
+      description: "Example task description. testtesttesttesttesttest",
+      status: "In Progress"
+    },
+    {
+      id: 3,
+      title: "Example Task 3",
+      description: "Example task description.",
+      status: "Open"
+    },
+    {
+      id: 4,
+      title: "Example Task 4",
+      description: "Example task description.",
+      status: "In Progress"
+    },
+  ],
   addTicket : (ticket) => {
     set((state) => ({
       tickets: [...state.tickets, ticket]
