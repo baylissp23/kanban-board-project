@@ -5,6 +5,7 @@ interface TicketStoreState {
   tickets : Ticket[];
   addTicket : (ticket : Ticket) => void;
   updateTicket : (id : number, newStatus : TicketStatus, newTitle : string, newDesc : string) => void;
+  deleteTicket : (id : number) => void;
 }
 
 export const useTicketStore = create<TicketStoreState>()((set) => ({
@@ -50,4 +51,15 @@ export const useTicketStore = create<TicketStoreState>()((set) => ({
       return { tickets: updateTickets }
     })
   },
+  deleteTicket : (id) => {
+    set((state) => {
+      const allTicketsExceptDeleted = state.tickets.filter((ticket) => {
+        if (ticket.id === id) {
+          return !ticket;
+        }
+        return ticket;
+      })
+      return { tickets: allTicketsExceptDeleted }
+    })
+  }
 }));

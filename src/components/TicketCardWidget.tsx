@@ -10,6 +10,7 @@ interface TicketCardWidgetProps {
 
 function TicketCardWidget({ status }: TicketCardWidgetProps) {
   const tickets = useTicketStore((state) => state.tickets);
+  const deleteTicket = useTicketStore((state) => state.deleteTicket);
 
   return (
     <>
@@ -28,7 +29,12 @@ function TicketCardWidget({ status }: TicketCardWidgetProps) {
                     Expand Ticket
                   </Button>
                 </Link>
-                <Button variant="danger">Delete</Button>
+                <Button
+                  variant="danger"
+                  onClick={() => deleteTicket(ticket.id)}
+                >
+                  Delete
+                </Button>
               </Card.Body>
             </Card>
           );

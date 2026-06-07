@@ -12,6 +12,7 @@ import EditTicketModal from "./EditTicketModal";
 function TicketDetail() {
   const params = useParams();
   const tickets = useTicketStore((state) => state.tickets);
+  const deleteTicket = useTicketStore((state) => state.deleteTicket);
 
   const numericId = Number(params.id);
 
@@ -55,7 +56,14 @@ function TicketDetail() {
               <Card.Body>{focusedTicket.description}</Card.Body>
               <Card.Footer>
                 <EditTicketModal ticket={focusedTicket} />
-                <Button variant="danger">Delete Ticket</Button>
+                <Link to="/">
+                  <Button
+                    variant="danger"
+                    onClick={() => deleteTicket(focusedTicket.id)}
+                  >
+                    Delete Ticket
+                  </Button>
+                </Link>
               </Card.Footer>
             </Card>
           </Col>
