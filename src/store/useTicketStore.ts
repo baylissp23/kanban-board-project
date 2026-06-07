@@ -4,7 +4,7 @@ import { create } from "zustand";
 interface TicketStoreState {
   tickets : Ticket[];
   addTicket : (ticket : Ticket) => void;
-  updateTicketStatus : (id : number, newStatus : TicketStatus) => void;
+  updateTicket : (id : number, newStatus : TicketStatus, newTitle : string, newDesc : string) => void;
 }
 
 export const useTicketStore = create<TicketStoreState>()((set) => ({
@@ -39,11 +39,11 @@ export const useTicketStore = create<TicketStoreState>()((set) => ({
       tickets: [...state.tickets, ticket]
     }))
   },
-  updateTicketStatus : (id, newStatus) => {
+  updateTicket : (id, newStatus, newTitle, newDesc) => {
     set((state) => {
       const updateTickets = state.tickets.map((ticket) => {
         if (ticket.id === id) {
-            return { ...ticket, status: newStatus };
+            return { ...ticket, title: newTitle, description: newDesc, status: newStatus };
         }
         return ticket;
       })
