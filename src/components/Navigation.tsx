@@ -2,6 +2,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import { NavLink, Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 function Navigation() {
   return (
@@ -21,6 +22,29 @@ function Navigation() {
             <Nav.Link as={NavLink} to="/new">
               Create Ticket
             </Nav.Link>
+          </Nav>
+          <Nav className="ms-auto">
+            <Button
+              variant="outline-secondary"
+              onClick={() => {
+                const currentTheme =
+                  document.documentElement.getAttribute("data-bs-theme");
+
+                if (currentTheme === "dark") {
+                  document.documentElement.setAttribute(
+                    "data-bs-theme",
+                    "light",
+                  );
+                } else {
+                  document.documentElement.setAttribute(
+                    "data-bs-theme",
+                    "dark",
+                  );
+                }
+              }}
+            >
+              Toggle Theme
+            </Button>
           </Nav>
         </Navbar.Collapse>
       </Container>
