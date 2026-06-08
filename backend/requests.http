@@ -1,0 +1,22 @@
+### Get all tickets
+GET http://localhost:3000/api/tickets
+
+### Create a new ticket
+POST http://localhost:3000/api/tickets
+Content-Type: application/json
+
+{
+  "title": "Fix the navigation bar",
+  "description": "The links are broken on mobile devices."
+}
+
+### Update a ticket's status
+PUT http://localhost:3000/api/tickets/6a26d1283efcb8427efc0d21
+Content-Type: application/json
+
+{
+  "status": "In Progress"
+}
+
+### Delete a ticket
+DELETE http://localhost:3000/api/tickets/6a26d1283efcb8427efc0d21

@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { useTicketStore } from "../store/useTicketStore";
 import { Badge, Card } from "react-bootstrap";
-import type { Ticket } from "../types";
+import type { Ticket } from "../../../shared/types";
 import EditTicketModal from "./EditTicketModal";
 
 function TicketDetail() {
@@ -14,13 +14,13 @@ function TicketDetail() {
   const tickets = useTicketStore((state) => state.tickets);
   const deleteTicket = useTicketStore((state) => state.deleteTicket);
 
-  const numericId = Number(params.id);
+  const stringId = params.id;
 
   const focusedTicket = tickets.find((ticket) => {
-    return ticket.id === numericId;
+    return ticket._id === stringId;
   })!;
 
-  const formattedTicketDate = new Date(focusedTicket.id).toLocaleDateString(
+  const formattedTicketDate = new Date(focusedTicket._id).toLocaleDateString(
     undefined,
     {
       year: "numeric",
@@ -59,7 +59,7 @@ function TicketDetail() {
                 <Link to="/">
                   <Button
                     variant="danger"
-                    onClick={() => deleteTicket(focusedTicket.id)}
+                    onClick={() => deleteTicket(focusedTicket._id)}
                   >
                     Delete Ticket
                   </Button>

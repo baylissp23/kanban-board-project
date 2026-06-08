@@ -5,8 +5,16 @@ import CreateTicket from "./components/CreateTicket";
 import Navigation from "./components/Navigation";
 import TicketDetail from "./components/TicketDetail";
 import Container from "react-bootstrap/Container";
+import { useEffect } from "react";
+import { useTicketStore } from "./store/useTicketStore";
 
 function App() {
+  const fetchTickets = useTicketStore((state) => state.fetchTickets);
+
+  useEffect(() => {
+    fetchTickets();
+  }, [fetchTickets]);
+
   return (
     <>
       <Navigation />

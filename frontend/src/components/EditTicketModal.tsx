@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import type { Ticket, TicketStatus } from "../types";
+import type { Ticket, TicketStatus } from "../../../shared/types";
 import { Button } from "react-bootstrap";
 import { useTicketStore } from "../store/useTicketStore";
 
@@ -36,7 +36,7 @@ function EditTicketModal({ ticket }: EditTicketModalProps) {
               const description = ticketData.get("description") as string;
               const status = ticketData.get("status") as TicketStatus;
 
-              updateTicket(ticket.id, status, title, description);
+              updateTicket(ticket._id, status, title, description);
             }}
           >
             <Form.Group className="mb-3" controlId="ticketTitle">

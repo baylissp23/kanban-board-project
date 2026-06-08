@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import { useTicketStore } from "../store/useTicketStore";
-import { type TicketStatus } from "../types/index";
+import { type TicketStatus } from "../../../shared/types";
 import Popover from "react-bootstrap/Popover";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import { useState, useRef, useEffect } from "react";
@@ -39,7 +39,6 @@ function CreateTicket() {
             const status = ticketData.get("status") as TicketStatus;
 
             addTicket({
-              id: Date.now(),
               title: title,
               description: description,
               status: status,

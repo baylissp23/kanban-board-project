@@ -1,7 +1,7 @@
 import { useTicketStore } from "../store/useTicketStore";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import type { TicketStatus } from "../types";
+import type { TicketStatus } from "../../../shared/types";
 import { Link } from "react-router-dom";
 
 interface TicketCardWidgetProps {
@@ -20,18 +20,18 @@ function TicketCardWidget({ status }: TicketCardWidgetProps) {
         })
         .map((ticket) => {
           return (
-            <Card key={ticket.id} className="mb-3 shadow-sm h-30">
+            <Card key={ticket._id} className="mb-3 shadow-sm h-30">
               <Card.Body>
                 <Card.Title>{ticket.title}</Card.Title>
                 <Card.Text>{ticket.description.slice(0, 49)}...</Card.Text>
-                <Link to={`/ticket/${ticket.id}`}>
+                <Link to={`/ticket/${ticket._id}`}>
                   <Button variant="primary" className="me-2">
                     Expand Ticket
                   </Button>
                 </Link>
                 <Button
                   variant="danger"
-                  onClick={() => deleteTicket(ticket.id)}
+                  onClick={() => deleteTicket(ticket._id)}
                 >
                   Delete
                 </Button>
