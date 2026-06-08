@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 app.get("/api/tickets", async (req, res) => {
     try {
         const tickets = await TicketModel.find({});
-        res.json();
+        res.json(tickets);
     } catch (err) {
         res.status(500).json({ message : "Failed to fetch tickets" });
     }
